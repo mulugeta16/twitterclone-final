@@ -1,0 +1,1237 @@
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE DATABASE "twitterclone_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "twitterclone_test" ENCODING = 'unicode'[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6988217383964113185)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMessages (20200427114040)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (68.0ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "content" text)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200427114040"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6988217383964113185)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2021-06-03 13:49:26 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1450)
+  Rendered layout layouts/application.html.erb (Duration: 884.4ms | Allocations: 308647)
+Completed 200 OK in 915ms (Views: 892.3ms | ActiveRecord: 0.6ms | Allocations: 314356)
+
+
+Started GET "/" for ::1 at 2021-06-03 13:49:34 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 642)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | Allocations: 12470)
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.3ms | Allocations: 13150)
+
+
+Started GET "/messages/new" for ::1 at 2021-06-03 13:50:16 +0900
+Processing by MessagesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 30.8ms | Allocations: 8371)
+  Rendered messages/new.html.erb within layouts/application (Duration: 32.4ms | Allocations: 8695)
+  Rendered layout layouts/application.html.erb (Duration: 45.6ms | Allocations: 20508)
+Completed 200 OK in 56ms (Views: 46.3ms | ActiveRecord: 3.9ms | Allocations: 22917)
+
+
+Started POST "/messages/confirm" for ::1 at 2021-06-03 13:54:10 +0900
+Processing by MessagesController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ncIv75w6DZN+tFiPL5OnB8HrGAypBMts0HRyG942DfoN6A+/9MC/sNflBuopa2C4JUPWchDuwdMStWUiGE/FvA==", "message"=>{"content"=>"Bonjour"}, "commit"=>"Create Message"}
+  Rendering layout layouts/application.html.erb
+  Rendering messages/confirm.html.erb within layouts/application
+  Rendered messages/confirm.html.erb within layouts/application (Duration: 3.5ms | Allocations: 741)
+  Rendered layout layouts/application.html.erb (Duration: 37.7ms | Allocations: 12574)
+Completed 200 OK in 41ms (Views: 38.5ms | ActiveRecord: 0.0ms | Allocations: 13735)
+
+
+Started POST "/messages" for ::1 at 2021-06-03 13:54:22 +0900
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xs+mMjWz5XyWeNwv7RX2f3hDqAiuSGpejmMpCx0ouJebj4ddgnPN5uF5PIc9/HocuCBIxuIqtLZBBdEYmDeCHQ==", "message"=>{"content"=>"Bonjour"}, "commit"=>"submit"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (2.7ms)[0m  [1m[32mINSERT INTO "messages" ("content") VALUES ($1) RETURNING "id"[0m  [["content", "Bonjour"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 9ms (ActiveRecord: 3.4ms | Allocations: 2535)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 13:54:22 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 692)
+  Rendered layout layouts/application.html.erb (Duration: 17.8ms | Allocations: 12417)
+Completed 200 OK in 19ms (Views: 18.2ms | ActiveRecord: 0.3ms | Allocations: 13009)
+
+
+Started GET "/messages/1/edit" for ::1 at 2021-06-03 13:59:21 +0900
+Processing by MessagesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:46:in `set_message'
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:23:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering messages/edit.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 1.7ms | Allocations: 687)
+  Rendered messages/edit.html.erb within layouts/application (Duration: 2.7ms | Allocations: 863)
+  Rendered layout layouts/application.html.erb (Duration: 19.4ms | Allocations: 12679)
+Completed 200 OK in 34ms (Views: 20.2ms | ActiveRecord: 0.4ms | Allocations: 17056)
+
+
+Started PATCH "/messages/1" for ::1 at 2021-06-03 13:59:50 +0900
+Processing by MessagesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gqzTI6rkPrwpX5SNZOtluyq2VJZ/6lSmFF/Z/IQrCD6AONxkZ1km5YaFt8afh0BSUzfG7rrNgQzd28H9eitRLw==", "message"=>{"content"=>"Bonsoir"}, "commit"=>"Update Message", "id"=>"1"}
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:46:in `set_message'
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:27:in `update'
+  [1m[36mMessage Update (12.1ms)[0m  [1m[33mUPDATE "messages" SET "content" = $1 WHERE "messages"."id" = $2[0m  [["content", "Bonsoir"], ["id", 1]]
+  ↳ app/controllers/messages_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:27:in `update'
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 20ms (ActiveRecord: 13.0ms | Allocations: 3037)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 13:59:50 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 608)
+  Rendered layout layouts/application.html.erb (Duration: 17.0ms | Allocations: 12334)
+Completed 200 OK in 18ms (Views: 17.3ms | ActiveRecord: 0.2ms | Allocations: 12892)
+
+
+Started GET "/messages/new" for ::1 at 2021-06-03 14:00:41 +0900
+Processing by MessagesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 2.0ms | Allocations: 463)
+  Rendered messages/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 521)
+  Rendered layout layouts/application.html.erb (Duration: 17.8ms | Allocations: 12236)
+Completed 200 OK in 19ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 12789)
+
+
+Started POST "/messages/confirm" for ::1 at 2021-06-03 14:00:56 +0900
+Processing by MessagesController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rTsHkrTYn75b4Tf8RWfX/pzkApJvs9JCG86AI3seY689ESfC3CItnfKwaZlDnxBBeEzM7NZZ2P3ZD5cavWer6Q==", "message"=>{"content"=>"Bonjour"}, "commit"=>"Create Message"}
+  Rendering layout layouts/application.html.erb
+  Rendering messages/confirm.html.erb within layouts/application
+  Rendered messages/confirm.html.erb within layouts/application (Duration: 1.0ms | Allocations: 298)
+  Rendered layout layouts/application.html.erb (Duration: 18.9ms | Allocations: 12012)
+Completed 200 OK in 21ms (Views: 19.8ms | ActiveRecord: 0.0ms | Allocations: 12651)
+
+
+Started GET "/messages/new?utf8=%E2%9C%93&message%5Bcontent%5D=Bonjour&back=back" for ::1 at 2021-06-03 14:02:01 +0900
+Processing by MessagesController#new as HTML
+  Parameters: {"utf8"=>"✓", "message"=>{"content"=>"Bonjour"}, "back"=>"back"}
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 1.3ms | Allocations: 467)
+  Rendered messages/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 525)
+  Rendered layout layouts/application.html.erb (Duration: 17.7ms | Allocations: 12236)
+Completed 200 OK in 19ms (Views: 18.4ms | ActiveRecord: 0.0ms | Allocations: 12813)
+
+
+Started POST "/messages/confirm" for ::1 at 2021-06-03 14:02:06 +0900
+Processing by MessagesController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ai6731aTY4FKin+2vfoTtbVhx4pX5kLDwgv/bt/aOT7Hbpqw4VNLGz2Lnx5tE5/WdQInRBuEnCsNbQd9WsUDtA==", "message"=>{"content"=>""}, "commit"=>"Create Message"}
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 4.9ms | Allocations: 2373)
+  Rendered messages/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 2431)
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | Allocations: 14142)
+Completed 200 OK in 23ms (Views: 21.8ms | ActiveRecord: 0.0ms | Allocations: 14758)
+
+
+Started POST "/messages" for ::1 at 2021-06-03 14:02:21 +0900
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y0P3v7ocYyCgYk/Y9vPXaMgG1c04aV4YHszeO42UNB8OA9bQDdxLutdjr3AmGlsLCGU1A3QLgPDRqiYoCIsOlQ==", "message"=>{"content"=>""}, "commit"=>"Create Message"}
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 4.4ms | Allocations: 2203)
+  Rendered messages/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2261)
+  Rendered layout layouts/application.html.erb (Duration: 21.1ms | Allocations: 13972)
+Completed 200 OK in 31ms (Views: 29.3ms | ActiveRecord: 0.0ms | Allocations: 15091)
+
+
+Started POST "/messages" for ::1 at 2021-06-03 14:02:37 +0900
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SIxgw6Qy/sN+WzaHX7KZwAIWSD7gdzQbkMer+u/URBqNzEGsE/LWWQla1i+PWxWjwnWo8KwV6vNfoVPpast+kA==", "message"=>{"content"=>"hjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"}, "commit"=>"Create Message"}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("content") VALUES ($1) RETURNING "id"[0m  [["content", "hjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 12ms (ActiveRecord: 6.9ms | Allocations: 1946)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 14:02:37 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 671)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 12405)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.2ms | Allocations: 12959)
+
+
+Started GET "/messages/2/edit" for ::1 at 2021-06-03 14:03:00 +0900
+Processing by MessagesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:46:in `set_message'
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:23:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering messages/edit.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 1.3ms | Allocations: 507)
+  Rendered messages/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 565)
+  Rendered layout layouts/application.html.erb (Duration: 20.3ms | Allocations: 12278)
+Completed 200 OK in 25ms (Views: 21.0ms | ActiveRecord: 0.3ms | Allocations: 13603)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 14:03:24 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 674)
+  Rendered layout layouts/application.html.erb (Duration: 22.2ms | Allocations: 12401)
+Completed 200 OK in 24ms (Views: 22.7ms | ActiveRecord: 0.3ms | Allocations: 12936)
+
+
+Started GET "/messages/new" for ::1 at 2021-06-03 14:03:29 +0900
+Processing by MessagesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 1.2ms | Allocations: 463)
+  Rendered messages/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 521)
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | Allocations: 12233)
+Completed 200 OK in 19ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 12778)
+
+
+Started POST "/messages/confirm" for ::1 at 2021-06-03 14:04:04 +0900
+Processing by MessagesController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7q5fVgmJGx2t5qlkAM4ikPaBOgI7O6zsqdPRSL/SE7J+hH8GYXOpPgS39wEGNuUvEin0fILRplNrEsZxeavb9A==", "message"=>{"content"=>"Bonjour"}, "commit"=>"Create Message"}
+  Rendering layout layouts/application.html.erb
+  Rendering messages/confirm.html.erb within layouts/application
+  Rendered messages/confirm.html.erb within layouts/application (Duration: 0.9ms | Allocations: 296)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 12009)
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.0ms | Allocations: 12644)
+
+
+Started POST "/messages" for ::1 at 2021-06-03 14:04:09 +0900
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GujOXkRpc8VcdBP+0/qRXuAVyGAKnO4W0tBmvpbqvCDfqO8x86lbXyt181YDEx09IHYorkb+MP4dtp6tE/WGqg==", "message"=>{"content"=>"Bonjour"}, "commit"=>"submit"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("content") VALUES ($1) RETURNING "id"[0m  [["content", "Bonjour"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 7ms (ActiveRecord: 2.6ms | Allocations: 1931)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 14:04:09 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 736)
+  Rendered layout layouts/application.html.erb (Duration: 19.8ms | Allocations: 12462)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.3ms | Allocations: 13017)
+
+
+Started GET "/messages/new" for ::1 at 2021-06-03 14:04:25 +0900
+Processing by MessagesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 1.6ms | Allocations: 463)
+  Rendered messages/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 521)
+  Rendered layout layouts/application.html.erb (Duration: 33.0ms | Allocations: 12232)
+Completed 200 OK in 35ms (Views: 33.7ms | ActiveRecord: 0.0ms | Allocations: 12773)
+
+
+Started POST "/messages/confirm" for ::1 at 2021-06-03 16:03:34 +0900
+Processing by MessagesController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GKRPBFly6aJpCHaHzhwITc5vT7mzdSWuGf3CMDD4+6aIjm9UMYhbgcBZKOLI5M/yKseBxwqfLxHbPNUJ9oEz4A==", "message"=>{"content"=>""}, "commit"=>"Create Message"}
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 8.0ms | Allocations: 2632)
+  Rendered messages/new.html.erb within layouts/application (Duration: 9.7ms | Allocations: 2936)
+  Rendered layout layouts/application.html.erb (Duration: 53.8ms | Allocations: 14985)
+Completed 200 OK in 60ms (Views: 58.1ms | Allocations: 16491)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 16:03:40 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 19.2ms | Allocations: 3149)
+  Rendered layout layouts/application.html.erb (Duration: 37.0ms | Allocations: 14882)
+Completed 200 OK in 40ms (Views: 37.8ms | ActiveRecord: 7.3ms | Allocations: 15611)
+
+
+Started GET "/messages/new" for ::1 at 2021-06-03 16:03:42 +0900
+Processing by MessagesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 1.5ms | Allocations: 466)
+  Rendered messages/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 524)
+  Rendered layout layouts/application.html.erb (Duration: 18.0ms | Allocations: 12240)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.0ms | Allocations: 12798)
+
+
+Started POST "/messages/confirm" for ::1 at 2021-06-03 16:03:57 +0900
+Processing by MessagesController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mVJgPDJoR4SHqe1r4PEWseaHLHonPMABhxhQkddmYtoJeEBsWpL1py74sw7mCdEOAi/iBJ7Wyr5F2UeoER+qnA==", "message"=>{"content"=>"arigato"}, "commit"=>"Create Message"}
+  Rendering layout layouts/application.html.erb
+  Rendering messages/confirm.html.erb within layouts/application
+  Rendered messages/confirm.html.erb within layouts/application (Duration: 1.7ms | Allocations: 519)
+  Rendered layout layouts/application.html.erb (Duration: 18.1ms | Allocations: 12232)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.0ms | Allocations: 13005)
+
+
+Started POST "/messages" for ::1 at 2021-06-03 16:04:01 +0900
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SkPe+4vDWp+aA03vr2MMOLbBoT83H479CTGt4KDg6/2PA/+UPANyBe0CrUd/ioBbdqJB8Xt9UBXGV1XzJf/Rdw==", "message"=>{"content"=>"arigato"}, "commit"=>"submit"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("content") VALUES ($1) RETURNING "id"[0m  [["content", "arigato"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 8ms (ActiveRecord: 1.9ms | Allocations: 1990)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 16:04:01 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 805)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 12530)
+Completed 200 OK in 21ms (Views: 19.7ms | ActiveRecord: 0.2ms | Allocations: 13095)
+
+
+Started GET "/messages/new" for ::1 at 2021-06-03 16:04:07 +0900
+Processing by MessagesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 1.2ms | Allocations: 463)
+  Rendered messages/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 521)
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | Allocations: 12232)
+Completed 200 OK in 21ms (Views: 20.8ms | ActiveRecord: 0.0ms | Allocations: 12775)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 16:04:10 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 802)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 12528)
+Completed 200 OK in 19ms (Views: 18.0ms | ActiveRecord: 0.2ms | Allocations: 13068)
+
+
+Started GET "/messages/2/edit" for ::1 at 2021-06-03 16:04:14 +0900
+Processing by MessagesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:46:in `set_message'
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:23:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering messages/edit.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 1.6ms | Allocations: 512)
+  Rendered messages/edit.html.erb within layouts/application (Duration: 3.2ms | Allocations: 657)
+  Rendered layout layouts/application.html.erb (Duration: 19.9ms | Allocations: 12368)
+Completed 200 OK in 26ms (Views: 20.8ms | ActiveRecord: 0.6ms | Allocations: 13874)
+
+
+Started PATCH "/messages/2" for ::1 at 2021-06-03 16:04:22 +0900
+Processing by MessagesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QqpNh6TJOxynFDqQL3VZ08N9cpdd2iTCwTt4BtDkfVazENyA4CP1H+qGnLreC69Y3cO/1vQ26Emt+bFyv1/ypw==", "message"=>{"content"=>"hjjjjjjjjjjjjj"}, "commit"=>"Update Message", "id"=>"2"}
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:46:in `set_message'
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:27:in `update'
+  [1m[36mMessage Update (0.3ms)[0m  [1m[33mUPDATE "messages" SET "content" = $1 WHERE "messages"."id" = $2[0m  [["content", "hjjjjjjjjjjjjj"], ["id", 2]]
+  ↳ app/controllers/messages_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:27:in `update'
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 13ms (ActiveRecord: 5.9ms | Allocations: 2824)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 16:04:22 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 803)
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 12525)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.2ms | Allocations: 13088)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 16:05:52 +0900
+  
+ActiveRecord::ConnectionNotEstablished (FATAL:  role "DIAW" does not exist
+):
+  
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:83:in `rescue in new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `public_send'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:926:in `checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:905:in `try_to_checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:866:in `acquire_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:588:in `checkout'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:428:in `connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:1128:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:327:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:283:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:611:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:606:in `build_watcher'
+activerecord (6.1.3.2) lib/active_record/migration.rb:588:in `block in call'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+railties (6.1.3.2) lib/rails/engine.rb:539:in `call'
+puma (5.3.2) lib/puma/configuration.rb:249:in `call'
+puma (5.3.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.3.2) lib/puma/thread_pool.rb:338:in `with_force_shutdown'
+puma (5.3.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.3.2) lib/puma/server.rb:438:in `process_client'
+puma (5.3.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/messages/new" for ::1 at 2021-06-03 16:10:55 +0900
+  
+ActiveRecord::ConnectionNotEstablished (FATAL:  role "DIAW" does not exist
+):
+  
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:83:in `rescue in new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `public_send'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:926:in `checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:905:in `try_to_checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:866:in `acquire_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:588:in `checkout'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:428:in `connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:1128:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:327:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:283:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:611:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:606:in `build_watcher'
+activerecord (6.1.3.2) lib/active_record/migration.rb:588:in `block in call'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+railties (6.1.3.2) lib/rails/engine.rb:539:in `call'
+puma (5.3.2) lib/puma/configuration.rb:249:in `call'
+puma (5.3.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.3.2) lib/puma/thread_pool.rb:338:in `with_force_shutdown'
+puma (5.3.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.3.2) lib/puma/server.rb:438:in `process_client'
+puma (5.3.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/messages/new" for ::1 at 2021-06-03 16:10:58 +0900
+  
+ActiveRecord::ConnectionNotEstablished (FATAL:  role "DIAW" does not exist
+):
+  
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:83:in `rescue in new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `public_send'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:926:in `checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:905:in `try_to_checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:866:in `acquire_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:588:in `checkout'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:428:in `connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:1128:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:327:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:283:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:611:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:606:in `build_watcher'
+activerecord (6.1.3.2) lib/active_record/migration.rb:588:in `block in call'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+railties (6.1.3.2) lib/rails/engine.rb:539:in `call'
+puma (5.3.2) lib/puma/configuration.rb:249:in `call'
+puma (5.3.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.3.2) lib/puma/thread_pool.rb:338:in `with_force_shutdown'
+puma (5.3.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.3.2) lib/puma/server.rb:438:in `process_client'
+puma (5.3.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/messages/new" for ::1 at 2021-06-03 16:11:48 +0900
+  
+ActiveRecord::ConnectionNotEstablished (FATAL:  role "DIAW" does not exist
+):
+  
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:83:in `rescue in new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `public_send'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:926:in `checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:905:in `try_to_checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:866:in `acquire_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:588:in `checkout'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:428:in `connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:1128:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:327:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:283:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:611:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:606:in `build_watcher'
+activerecord (6.1.3.2) lib/active_record/migration.rb:588:in `block in call'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+railties (6.1.3.2) lib/rails/engine.rb:539:in `call'
+puma (5.3.2) lib/puma/configuration.rb:249:in `call'
+puma (5.3.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.3.2) lib/puma/thread_pool.rb:338:in `with_force_shutdown'
+puma (5.3.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.3.2) lib/puma/server.rb:438:in `process_client'
+puma (5.3.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/messages/new" for ::1 at 2021-06-03 16:11:49 +0900
+  
+ActiveRecord::ConnectionNotEstablished (FATAL:  role "DIAW" does not exist
+):
+  
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:83:in `rescue in new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `public_send'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:926:in `checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:905:in `try_to_checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:866:in `acquire_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:588:in `checkout'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:428:in `connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:1128:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:327:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:283:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:611:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:606:in `build_watcher'
+activerecord (6.1.3.2) lib/active_record/migration.rb:588:in `block in call'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+railties (6.1.3.2) lib/rails/engine.rb:539:in `call'
+puma (5.3.2) lib/puma/configuration.rb:249:in `call'
+puma (5.3.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.3.2) lib/puma/thread_pool.rb:338:in `with_force_shutdown'
+puma (5.3.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.3.2) lib/puma/server.rb:438:in `process_client'
+puma (5.3.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/messages/new" for ::1 at 2021-06-03 16:11:54 +0900
+  
+ActiveRecord::ConnectionNotEstablished (FATAL:  role "DIAW" does not exist
+):
+  
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:83:in `rescue in new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `public_send'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:926:in `checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:905:in `try_to_checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:866:in `acquire_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:588:in `checkout'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:428:in `connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:1128:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:327:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:283:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:611:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:606:in `build_watcher'
+activerecord (6.1.3.2) lib/active_record/migration.rb:588:in `block in call'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+railties (6.1.3.2) lib/rails/engine.rb:539:in `call'
+puma (5.3.2) lib/puma/configuration.rb:249:in `call'
+puma (5.3.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.3.2) lib/puma/thread_pool.rb:338:in `with_force_shutdown'
+puma (5.3.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.3.2) lib/puma/server.rb:438:in `process_client'
+puma (5.3.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/messages/new" for ::1 at 2021-06-03 16:12:56 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 13.5ms | Allocations: 4899)
+  Rendered messages/new.html.erb within layouts/application (Duration: 15.4ms | Allocations: 5462)
+  Rendered layout layouts/application.html.erb (Duration: 281.1ms | Allocations: 293328)
+Completed 200 OK in 305ms (Views: 285.5ms | ActiveRecord: 3.6ms | Allocations: 299807)
+
+
+Started POST "/messages/confirm" for ::1 at 2021-06-03 16:13:04 +0900
+Processing by MessagesController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XM56+iNrHByPp03nBOob5lV+4hLNYk04uta4moaOZpWZjluVlKs0hvimrU/UA5eFlR0C3IEAk9B1sECJA5FcHw==", "message"=>{"content"=>"Bonjour"}, "commit"=>"Create Message"}
+  Rendering layout layouts/application.html.erb
+  Rendering messages/confirm.html.erb within layouts/application
+  Rendered messages/confirm.html.erb within layouts/application (Duration: 2.4ms | Allocations: 712)
+  Rendered layout layouts/application.html.erb (Duration: 17.8ms | Allocations: 12538)
+Completed 200 OK in 21ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 13686)
+
+
+Started POST "/messages" for ::1 at 2021-06-03 16:13:06 +0900
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tW1answQ/AluBjHyXEDfnOzT/D9zsE0/PXZjfokySOtwLXvxe9DUkxkH0VqMqVP/LLAc8T/Sk9fyEJttDC1yYQ==", "message"=>{"content"=>"Bonjour"}, "commit"=>"submit"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("content") VALUES ($1) RETURNING "id"[0m  [["content", "Bonjour"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 10ms (ActiveRecord: 3.6ms | Allocations: 2630)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 16:13:06 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1276)
+  Rendered layout layouts/application.html.erb (Duration: 18.5ms | Allocations: 13002)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.4ms | Allocations: 13776)
+
+
+Started DELETE "/messages/2" for ::1 at 2021-06-03 16:13:17 +0900
+Processing by MessagesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"pbvz9mwLrnhX5OsDMAxZa5LBATL40HLTDqAe61DRQ9lg+9KZ28uG4iDlC6vg5dUIUqLh/LSyrDvBxub41c55Uw==", "id"=>"2"}
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:46:in `set_message'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:34:in `destroy'
+  [1m[36mMessage Destroy (0.3ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/messages_controller.rb:34:in `destroy'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:34:in `destroy'
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 34ms (ActiveRecord: 1.6ms | Allocations: 3044)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 16:13:17 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 832)
+  Rendered layout layouts/application.html.erb (Duration: 17.3ms | Allocations: 12698)
+Completed 200 OK in 19ms (Views: 17.8ms | ActiveRecord: 0.2ms | Allocations: 13341)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 16:13:37 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 801)
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | Allocations: 12523)
+Completed 200 OK in 19ms (Views: 18.4ms | ActiveRecord: 0.2ms | Allocations: 13058)
+
+
+Started GET "/messages" for ::1 at 2021-06-03 16:13:39 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 807)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 12529)
+Completed 200 OK in 18ms (Views: 16.9ms | ActiveRecord: 0.3ms | Allocations: 13058)
+
+
+Started GET "/" for ::1 at 2021-06-03 16:13:50 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 801)
+  Rendered layout layouts/application.html.erb (Duration: 18.7ms | Allocations: 12554)
+Completed 200 OK in 20ms (Views: 19.2ms | ActiveRecord: 0.2ms | Allocations: 13085)
+
+
+Started GET "/" for ::1 at 2021-06-03 16:13:53 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 801)
+  Rendered layout layouts/application.html.erb (Duration: 18.6ms | Allocations: 12530)
+Completed 200 OK in 20ms (Views: 18.9ms | ActiveRecord: 0.3ms | Allocations: 13062)
+
+
+Started GET "/" for ::1 at 2021-06-03 16:13:55 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 808)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 12533)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.2ms | Allocations: 13081)
+
+
+Started GET "/" for ::1 at 2021-06-03 16:14:09 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 801)
+  Rendered layout layouts/application.html.erb (Duration: 34.7ms | Allocations: 12523)
+Completed 200 OK in 37ms (Views: 35.5ms | ActiveRecord: 0.3ms | Allocations: 13050)
+
+
+Started GET "/" for ::1 at 2021-06-03 16:14:12 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 802)
+  Rendered layout layouts/application.html.erb (Duration: 19.9ms | Allocations: 12572)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.3ms | Allocations: 13108)
+
+
+Started GET "/" for ::1 at 2021-06-03 16:14:13 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 801)
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 12527)
+Completed 200 OK in 21ms (Views: 20.1ms | ActiveRecord: 0.2ms | Allocations: 13060)
+
+
+Started GET "/" for ::1 at 2021-06-03 16:14:13 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 801)
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | Allocations: 12523)
+Completed 200 OK in 20ms (Views: 19.4ms | ActiveRecord: 0.2ms | Allocations: 13058)
+
+
+Started GET "/" for ::1 at 2021-06-03 16:14:14 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 801)
+  Rendered layout layouts/application.html.erb (Duration: 20.7ms | Allocations: 12533)
+Completed 200 OK in 22ms (Views: 21.1ms | ActiveRecord: 0.2ms | Allocations: 13058)
+
+
+Started GET "/" for ::1 at 2021-09-27 17:37:51 +0900
+  
+ActiveRecord::NoDatabaseError (FATAL:  database "twitterclone_development" does not exist
+):
+  
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:81:in `rescue in new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `public_send'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:926:in `checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:905:in `try_to_checkout_new_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:866:in `acquire_connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:588:in `checkout'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:428:in `connection'
+activerecord (6.1.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:1128:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:327:in `retrieve_connection'
+activerecord (6.1.3.2) lib/active_record/connection_handling.rb:283:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:611:in `connection'
+activerecord (6.1.3.2) lib/active_record/migration.rb:606:in `build_watcher'
+activerecord (6.1.3.2) lib/active_record/migration.rb:588:in `block in call'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+railties (6.1.3.2) lib/rails/engine.rb:539:in `call'
+puma (5.3.2) lib/puma/configuration.rb:249:in `call'
+puma (5.3.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.3.2) lib/puma/thread_pool.rb:338:in `with_force_shutdown'
+puma (5.3.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.3.2) lib/puma/server.rb:438:in `process_client'
+puma (5.3.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+  [1m[35m (7412.4ms)[0m  [1m[35mCREATE DATABASE "twitterclone_development" ENCODING = 'unicode'[0m
+  [1m[35m (769.0ms)[0m  [1m[35mCREATE DATABASE "twitterclone_test" ENCODING = 'unicode'[0m
+  [1m[35m (149.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6988217383964113185)[0m
+  [1m[35m (6.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMessages (20200427114040)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.0ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "content" text)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200427114040"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (6.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-09-27 17:38:54.966144"], ["updated_at", "2021-09-27 17:38:54.966144"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6988217383964113185)[0m
+  [1m[35m (9.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2021-09-27 17:39:19 +0900
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (7.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 20.2ms | Allocations: 1137)
+  Rendered layout layouts/application.html.erb (Duration: 1368.2ms | Allocations: 318205)
+Completed 200 OK in 1536ms (Views: 1387.4ms | ActiveRecord: 7.5ms | Allocations: 322585)
+
+
+Started GET "/messages/new" for ::1 at 2021-09-27 17:39:37 +0900
+Processing by MessagesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 197.1ms | Allocations: 5693)
+  Rendered messages/new.html.erb within layouts/application (Duration: 206.3ms | Allocations: 5987)
+  Rendered layout layouts/application.html.erb (Duration: 244.1ms | Allocations: 17935)
+Completed 200 OK in 262ms (Views: 245.5ms | ActiveRecord: 6.8ms | Allocations: 20292)
+
+
+Started POST "/messages/confirm" for ::1 at 2021-09-27 17:39:46 +0900
+Processing by MessagesController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0plMot+t2mgviX0/dtxKBbgzVAzyFoKo82TU6OImbZ0KotguVVoRGmcg8Rcx91dxvv3VoDeIZAsBI6FOIytYtg==", "message"=>{"content"=>"hi"}, "commit"=>"Create Message"}
+  Rendering layout layouts/application.html.erb
+  Rendering messages/confirm.html.erb within layouts/application
+  Rendered messages/confirm.html.erb within layouts/application (Duration: 47.7ms | Allocations: 633)
+  Rendered layout layouts/application.html.erb (Duration: 71.4ms | Allocations: 12508)
+Completed 200 OK in 98ms (Views: 95.4ms | ActiveRecord: 0.0ms | Allocations: 13515)
+
+
+Started POST "/messages" for ::1 at 2021-09-27 17:39:55 +0900
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"R8+1PKxhc0f/eKvM6AwipaJ7E9kE0CvyxTLhixa6wTaeceMm+9WGwWMS3J6Q+eqc3jX+lXjUGMhkHMg2FyIwkg==", "message"=>{"content"=>"hi"}, "commit"=>"submit"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (29.3ms)[0m  [1m[32mINSERT INTO "messages" ("content") VALUES ($1) RETURNING "id"[0m  [["content", "hi"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 47ms (ActiveRecord: 36.8ms | Allocations: 2387)
+
+
+Started GET "/messages" for ::1 at 2021-09-27 17:39:55 +0900
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:7
+  Rendered messages/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 648)
+  Rendered layout layouts/application.html.erb (Duration: 28.1ms | Allocations: 12535)
+Completed 200 OK in 30ms (Views: 28.8ms | ActiveRecord: 0.5ms | Allocations: 13141)
+
+
+  [1m[35m (14.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (14.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (392.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "twitterclone_development"[0m
+  [1m[35m (250.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "twitterclone_test"[0m
+  [1m[35m (586.9ms)[0m  [1m[35mCREATE DATABASE "twitterclone_development" ENCODING = 'unicode'[0m
+  [1m[35m (656.9ms)[0m  [1m[35mCREATE DATABASE "twitterclone_test" ENCODING = 'unicode'[0m
+  [1m[35m (190.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6988217383964113185)[0m
+  [1m[35m (6.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePosts (20210927084026)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.0ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "content" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210927084026"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (7.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-09-27 18:02:33.554750"], ["updated_at", "2021-09-27 18:02:33.554750"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6988217383964113185)[0m
+  [1m[35m (18.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/messages" for ::1 at 2021-09-27 18:02:53 +0900
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/messages"):
+  
+Started GET "/" for ::1 at 2021-09-27 18:03:57 +0900
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 24.8ms | Allocations: 1605)
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 1676)
+Completed 500 Internal Server Error in 107ms (ActiveRecord: 0.0ms | Allocations: 4903)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:   <tr>
+    5:     <th>Content</th>
+    6:   </tr>
+    7:   <% @posts.each do |post| %>
+    8:     <tr>
+    9:       <td><%= post.content %></td>
+   10:       <td><%= link_to 'Edit this tweet', edit_post_path(post.id) %></td>
+  
+app/views/posts/index.html.erb:7
+Started GET "/" for ::1 at 2021-09-27 18:06:43 +0900
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1563)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 1633)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 2948)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:   <tr>
+    5:     <th>Content</th>
+    6:   </tr>
+    7:   <% @posts.each do |post| %>
+    8:     <tr>
+    9:       <td><%= post.content %></td>
+   10:       <td><%= link_to 'Edit this tweet', edit_post_path(post.id) %></td>
+  
+app/views/posts/index.html.erb:7
+Started GET "/" for ::1 at 2021-09-27 18:07:11 +0900
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1361)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1429)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 1955)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:   <tr>
+    5:     <th>Content</th>
+    6:   </tr>
+    7:   <% @posts.each do |post| %>
+    8:     <tr>
+    9:       <td><%= post.content %></td>
+   10:       <td><%= link_to 'Edit this tweet', edit_post_path(post.id) %></td>
+  
+app/views/posts/index.html.erb:7
+Started GET "/" for ::1 at 2021-09-27 18:12:01 +0900
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (7.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:7
+  Rendered posts/index.html.erb within layouts/application (Duration: 70.5ms | Allocations: 2723)
+  Rendered layout layouts/application.html.erb (Duration: 1181.8ms | Allocations: 313102)
+Completed 200 OK in 1199ms (Views: 1184.5ms | ActiveRecord: 40.6ms | Allocations: 314636)
+
+
+Started GET "/posts/new" for ::1 at 2021-09-27 18:12:12 +0900
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 24.4ms | Allocations: 4367)
+  Rendered posts/new.html.erb within layouts/application (Duration: 26.3ms | Allocations: 4648)
+  Rendered layout layouts/application.html.erb (Duration: 27.7ms | Allocations: 4716)
+Completed 500 Internal Server Error in 125ms (ActiveRecord: 87.9ms | Allocations: 7927)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `choose_new_or_edit' for #<ActionView::Base:0x00000000009bf0>):
+    1: <%= form_with(model: @post, local: true ,url: choose_new_or_edit ) do |form| %>
+    2:   <% if @post.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= @post.errors.count %> errors occurred.</h2>
+  
+app/views/posts/_form.html.erb:1
+app/views/posts/new.html.erb:2
+Started GET "/posts/new" for ::1 at 2021-09-27 18:21:11 +0900
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 62.2ms | Allocations: 4034)
+  Rendered posts/new.html.erb within layouts/application (Duration: 63.0ms | Allocations: 4096)
+  Rendered layout layouts/application.html.erb (Duration: 103.6ms | Allocations: 16080)
+Completed 200 OK in 152ms (Views: 105.5ms | ActiveRecord: 8.2ms | Allocations: 21263)
+
+
+Started POST "/posts/confirm" for ::1 at 2021-09-27 18:21:23 +0900
+Processing by PostsController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ye9ewJergG7AuLJVRbtn3Z9BtR0Q+aqPhM6RVLdGKC0QUQjawB916FzSxQc9Tq/k4w9YUWz9mbUl4Ljptt7ZiQ==", "post"=>{"content"=>"hi"}, "commit"=>"Create Post"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/confirm.html.erb within layouts/application
+  Rendered posts/confirm.html.erb within layouts/application (Duration: 25.2ms | Allocations: 605)
+  Rendered layout layouts/application.html.erb (Duration: 54.6ms | Allocations: 12437)
+Completed 200 OK in 59ms (Views: 56.4ms | ActiveRecord: 0.0ms | Allocations: 13389)
+
+
+Started POST "/posts" for ::1 at 2021-09-27 18:21:27 +0900
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Enac047PCdSOJwb9ahmbG9OvJyXCsTpkTUPKIFdqQw7LyMrJ2Xv8UhJNca8S7FMir+HKab61CV7sbeOdVvKyqg==", "post"=>{"content"=>"hi"}, "commit"=>"submit"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[36mPost Create (2.1ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["content", "hi"], ["created_at", "2021-09-27 18:21:27.924055"], ["updated_at", "2021-09-27 18:21:27.924055"]]
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (49.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 64ms (ActiveRecord: 51.8ms | Allocations: 2698)
+
+
+Started GET "/posts" for ::1 at 2021-09-27 18:21:27 +0900
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:7
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 735)
+  Rendered layout layouts/application.html.erb (Duration: 25.8ms | Allocations: 12580)
+Completed 200 OK in 28ms (Views: 26.5ms | ActiveRecord: 0.5ms | Allocations: 13208)
+
+
+Started GET "/posts" for ::1 at 2021-09-27 18:23:31 +0900
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:7
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 609)
+  Rendered layout layouts/application.html.erb (Duration: 104.1ms | Allocations: 21766)
+Completed 200 OK in 107ms (Views: 105.3ms | ActiveRecord: 0.4ms | Allocations: 22328)
+
+
